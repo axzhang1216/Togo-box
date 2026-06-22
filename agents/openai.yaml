@@ -1,0 +1,3 @@
+display_name: Togo-box
+short_description: Burn unused quota on paper scans, full-text reading, and high-signal research briefings.
+default_prompt: Run Togo-box to spend unused quota on a high-signal literature radar.
