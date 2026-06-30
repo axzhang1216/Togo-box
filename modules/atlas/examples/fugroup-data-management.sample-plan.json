@@ -1,0 +1,297 @@
+{
+  "note": {
+    "title": "Fugroup数据与存储管理手册",
+    "slug": "fugroup-data-storage-management-manual",
+    "source_path": "Fugroup数据与存储管理手册.md",
+    "tags": ["数据管理", "存储", "课题组"]
+  },
+  "fragments": [
+    {
+      "memory_role": "resource",
+      "content": "fu01 是课题组服务器，IP 为 172.18.31.50，承担 CNN 深圳预报的日常运算，也支持包含 GEOS-Chem 和 WRF-GC 环境输入的日常科研；其存储用量紧张。",
+      "source_excerpt": "fu01(172.18.31.50)... CNN深圳预报的日常运算... 有GEOS-Chem, WRFgc环境以及输入",
+      "why_remember": "未来询问课题组服务器用途、预报运行位置或存储压力时需要召回。",
+      "retrieval_queries": [
+        "fu01 是干什么的",
+        "CNN 深圳预报在哪台服务器运行",
+        "哪台服务器有 GEOS-Chem 和 WRF-GC 环境"
+      ],
+      "tags": ["服务器", "预报", "存储"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "fu01",
+          "kind": "location",
+          "description": "课题组服务器，IP 172.18.31.50"
+        },
+        {
+          "type": "thing",
+          "title": "CNN 深圳预报",
+          "kind": "project"
+        },
+        {
+          "type": "thing",
+          "title": "GEOS-Chem",
+          "kind": "model"
+        },
+        {
+          "type": "thing",
+          "title": "WRF-GC",
+          "kind": "model"
+        }
+      ],
+      "relations": [
+        {"from": "fu01", "type": "used_by", "to": "CNN 深圳预报"},
+        {"from": "fu01", "type": "supports", "to": "GEOS-Chem"},
+        {"from": "fu01", "type": "supports", "to": "WRF-GC"}
+      ]
+    },
+    {
+      "memory_role": "rule",
+      "content": "每个服务器的 home 文件夹数据占用率应低于 75%。",
+      "source_excerpt": "每个服务器的home文件夹数据占用率小于75%",
+      "why_remember": "未来判断服务器存储健康状态或提出清理建议时需要应用该阈值。",
+      "retrieval_queries": [
+        "服务器 home 占用率限制是多少",
+        "home 文件夹存储健康标准",
+        "home 目录占用多少算超标"
+      ],
+      "tags": ["存储健康", "规则"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "服务器 home 文件夹",
+          "kind": "location"
+        },
+        {
+          "type": "statement",
+          "title": "服务器 home 数据占用率应低于 75%",
+          "kind": "constraint",
+          "status": "active",
+          "confidence": "high"
+        }
+      ],
+      "relations": [
+        {"from": "服务器 home 数据占用率应低于 75%", "type": "constrains", "to": "服务器 home 文件夹"}
+      ]
+    },
+    {
+      "memory_role": "rule",
+      "content": "不要在 home 文件夹中进行大规模文件写入。",
+      "source_excerpt": "不在home文件夹进行大规模文件写入",
+      "why_remember": "未来规划服务器任务或诊断 home 空间压力时需要提醒该禁止项。",
+      "retrieval_queries": [
+        "能不能在 home 目录大量写文件",
+        "服务器大规模输出应该避免哪里",
+        "home 文件夹使用规则"
+      ],
+      "tags": ["存储健康", "规则"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "服务器 home 文件夹",
+          "kind": "location"
+        },
+        {
+          "type": "statement",
+          "title": "不能在 home 文件夹进行大规模文件写入",
+          "kind": "rule",
+          "status": "active",
+          "confidence": "high"
+        }
+      ],
+      "relations": [
+        {"from": "不能在 home 文件夹进行大规模文件写入", "type": "constrains", "to": "服务器 home 文件夹"}
+      ]
+    },
+    {
+      "memory_role": "rule",
+      "content": "找不到数据来源或无法确定数据内容的数据，应当删除。",
+      "source_excerpt": "找不到数据来源，不确定数据内容的数据，要舍得删除",
+      "why_remember": "未来做数据清理时需要避免保留不可追溯、不可解释的数据。",
+      "retrieval_queries": [
+        "来源不明的数据怎么处理",
+        "不知道内容的数据要不要保留",
+        "数据清理规则"
+      ],
+      "tags": ["数据管理", "清理规则"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "来源不明数据",
+          "kind": "dataset"
+        },
+        {
+          "type": "statement",
+          "title": "找不到来源或内容不确定的数据应删除",
+          "kind": "rule",
+          "status": "active",
+          "confidence": "high"
+        }
+      ],
+      "relations": [
+        {"from": "找不到来源或内容不确定的数据应删除", "type": "constrains", "to": "来源不明数据"}
+      ]
+    },
+    {
+      "memory_role": "resource",
+      "content": "高优先级存储用于保存常用科研数据以及新生成、待分析的模拟结果，其范围包括部分服务器存储和太乙、启明超算 scratch 存储。",
+      "source_excerpt": "高优先级存储... 用途：存储常用的科研数据和新生成，待分析的模拟结果",
+      "why_remember": "未来决定数据应放在哪里时需要理解高优先级存储的用途。",
+      "retrieval_queries": [
+        "高优先级存储用来放什么",
+        "常用科研数据应该放哪里",
+        "待分析模拟结果存储位置"
+      ],
+      "tags": ["存储分级"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "高优先级存储",
+          "kind": "location",
+          "description": "用于常用科研数据和新生成、待分析模拟结果的存储层级"
+        },
+        {
+          "type": "thing",
+          "title": "太乙超算集群",
+          "kind": "location"
+        },
+        {
+          "type": "thing",
+          "title": "启明超算集群",
+          "kind": "location"
+        }
+      ],
+      "relations": [
+        {"from": "高优先级存储", "type": "part_of", "to": "太乙超算集群"},
+        {"from": "高优先级存储", "type": "part_of", "to": "启明超算集群"}
+      ]
+    },
+    {
+      "memory_role": "procedure",
+      "content": "已经发表文章所使用的数据应整理、打标签、打包，上传到公开数据库并获得 DOI，然后存入离线存储。",
+      "source_excerpt": "已经发表的文章数据... 整理、标签、打包... 上传到公开数据库网站（如scidb）并获得doi... 存入离线存储",
+      "why_remember": "未来处理已发表文章数据归档时需要按这个流程执行。",
+      "retrieval_queries": [
+        "发表文章的数据怎么归档",
+        "已发表数据要上传哪里",
+        "文章数据 DOI 和离线存储流程"
+      ],
+      "tags": ["发表数据", "数据归档"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "已发表文章数据",
+          "kind": "dataset"
+        },
+        {
+          "type": "thing",
+          "title": "Scidb",
+          "kind": "tool"
+        },
+        {
+          "type": "thing",
+          "title": "离线存储",
+          "kind": "location"
+        },
+        {
+          "type": "statement",
+          "title": "已发表文章数据应公开归档并离线保存",
+          "kind": "rule",
+          "status": "active",
+          "confidence": "high"
+        }
+      ],
+      "relations": [
+        {"from": "已发表文章数据", "type": "stored_in", "to": "离线存储"},
+        {"from": "已发表文章数据", "type": "uses", "to": "Scidb"}
+      ]
+    },
+    {
+      "memory_role": "procedure",
+      "content": "测试或 debug 用数据如果 1 个月内仍在使用，应存储在高优先级存储；否则应打标签、保留设定文件和一个代表性输出文件，并删除其他文件。",
+      "source_excerpt": "测试/debug用数据... IF (1个月内正在使用) THEN... ELSE：打标签... 保留设定文件... 删除其它文件",
+      "why_remember": "未来清理临时模拟或 debug 数据时需要按该保留策略判断。",
+      "retrieval_queries": [
+        "debug 数据怎么清理",
+        "测试数据多久不用可以删",
+        "临时模拟输出保留规则"
+      ],
+      "tags": ["debug数据", "清理规则"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "测试/debug 用数据",
+          "kind": "dataset"
+        },
+        {
+          "type": "thing",
+          "title": "高优先级存储",
+          "kind": "location"
+        },
+        {
+          "type": "statement",
+          "title": "不再近期使用的测试/debug 数据应简化保留并删除冗余文件",
+          "kind": "rule",
+          "status": "active",
+          "confidence": "high"
+        }
+      ],
+      "relations": [
+        {"from": "测试/debug 用数据", "type": "stored_in", "to": "高优先级存储"}
+      ]
+    },
+    {
+      "memory_role": "rule",
+      "content": "离职同事的数据应先联系本人处理；如果本人没有意见或没有时间，再按默认处理方案处理。",
+      "source_excerpt": "离职同事数据处理方案：先联系本人自己处理，本人没意见或没时间的，按照默认处理方案处理",
+      "why_remember": "未来处理离职成员遗留数据时需要先满足责任和沟通边界。",
+      "retrieval_queries": [
+        "离职同事数据怎么处理",
+        "清理离职成员数据前要联系本人吗",
+        "离职数据默认处理方案"
+      ],
+      "tags": ["离职数据", "责任边界"],
+      "entities": [
+        {
+          "type": "actor",
+          "title": "离职同事",
+          "name": "离职同事",
+          "kind": "team"
+        },
+        {
+          "type": "thing",
+          "title": "离职同事数据处理方案",
+          "kind": "method"
+        },
+        {
+          "type": "statement",
+          "title": "离职同事数据应先联系本人处理",
+          "kind": "rule",
+          "status": "active",
+          "confidence": "high"
+        }
+      ],
+      "relations": [
+        {"from": "离职同事数据应先联系本人处理", "type": "constrains", "to": "离职同事数据处理方案"}
+      ]
+    }
+  ],
+  "quality_checks": {
+    "omitted_noise": [
+      "Pasted image links",
+      "Markdown block anchors such as ^5424ac",
+      "Generic labels such as CPU and total storage when not reusable",
+      "Individual chemical species list entries"
+    ],
+    "entity_boundary_notes": [
+      "Storage tiers are modeled as thing.kind=location because future decisions route data to them.",
+      "Rules are modeled as statement entities only when phrased as propositions.",
+      "Server health details are retained only when tied to a reusable server memory."
+    ],
+    "open_questions": [
+      "CNN 深圳预报 and CNN 珠三角预报 may be project or model entities depending on wider Wiki convention.",
+      "Aoxing should become an actor only if contact responsibility is retained as a memory."
+    ]
+  }
+}

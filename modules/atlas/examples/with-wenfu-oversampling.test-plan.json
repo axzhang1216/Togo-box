@@ -1,0 +1,716 @@
+{
+  "note": {
+    "title": "With wenfu： Oversampling",
+    "slug": "conference-notes-with-wenfu-oversampling",
+    "source_path": "Conference notes/With wenfu： Oversampling.md",
+    "source_type": "markdown",
+    "domain": ["科研", "卫星遥感", "代码工程"],
+    "tags": [
+      "oversampling",
+      "TROPOMI",
+      "HCHO",
+      "conference-notes"
+    ]
+  },
+  "fragments": [
+    {
+      "memory_role": "resource",
+      "content": "这个 TROPOMI HCHO oversampling 工作流依赖两个 notebook：`1Daily_oversampling.ipynb` 和 `2Plot_oversampling.ipynb`；还依赖 Fortran 主程序 `Oversampling_Daily_Regridding.f90`，并通过 `run_oversampling.sh` 驱动运行。",
+      "source_excerpt": "就这两个文件有用；另外需要主程序：一段fortran code... 要使用里面的sh文件驱动；图片显示 1Daily_oversampling.ipynb、2Plot_oversampling.ipynb、Oversampling_Daily_Regridding.f90、run_oversampling.sh",
+      "why_remember": "未来复现或继续这个 oversampling 流程时，agent 需要知道具体核心文件名，而不是只知道有 notebook、Fortran 和 shell 脚本。",
+      "tags": [
+        "代码资源",
+        "oversampling"
+      ],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO oversampling 工作流",
+          "kind": "method",
+          "description": "从 TROPOMI HCHO level2 文件生成高分辨率 L3 结果的 oversampling 工作流"
+        },
+        {
+          "type": "thing",
+          "title": "TROPOMI",
+          "kind": "dataset"
+        },
+        {
+          "type": "thing",
+          "title": "HCHO",
+          "kind": "dataset"
+        },
+        {
+          "type": "thing",
+          "title": "1Daily_oversampling.ipynb",
+          "kind": "code",
+          "description": "生成每日 TROPOMI HCHO oversampling 中间结果的 notebook，位于太乙服务器 /work/ese-zhangax/data/1_Codes/TROPOMI_oversample_python"
+        },
+        {
+          "type": "thing",
+          "title": "2Plot_oversampling.ipynb",
+          "kind": "code",
+          "description": "合并并绘制/输出多日 oversampling 结果的 notebook，位于太乙服务器 /work/ese-zhangax/data/1_Codes/TROPOMI_oversample_python"
+        },
+        {
+          "type": "thing",
+          "title": "Oversampling_Daily_Regridding.f90",
+          "kind": "code",
+          "description": "TROPOMI HCHO oversampling 的 Fortran 主程序，位于太乙服务器 /work/ese-zhangax/data/1_Codes/TROPOMI_oversample_python"
+        },
+        {
+          "type": "thing",
+          "title": "run_oversampling.sh",
+          "kind": "code",
+          "description": "TROPOMI HCHO oversampling 的 shell 驱动脚本，位于太乙服务器 /work/ese-zhangax/data/1_Codes/TROPOMI_oversample_python"
+        }
+      ],
+      "relations": [
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "uses",
+          "to": "1Daily_oversampling.ipynb"
+        },
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "uses",
+          "to": "2Plot_oversampling.ipynb"
+        },
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "uses",
+          "to": "Oversampling_Daily_Regridding.f90"
+        },
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "uses",
+          "to": "run_oversampling.sh"
+        },
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "uses",
+          "to": "TROPOMI"
+        },
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "uses",
+          "to": "HCHO"
+        }
+      ],
+      "retrieval": {
+        "semantic_summary": "这个 TROPOMI HCHO oversampling 工作流依赖两个 notebook：`1Daily_oversampling.ipynb` 和 `2Plot_oversampling.ipynb`；还依赖 Fortran 主程序 `",
+        "direct_queries": [
+          "oversampling 需要哪些代码文件",
+          "TROPOMI HCHO oversampling 的主程序和 sh 文件叫什么",
+          "With wenfu oversampling 有哪些有用文件"
+        ],
+        "indirect_queries": [
+          "卫星数据后处理需要哪些脚本",
+          "遥感L2到L3处理代码组成",
+          "HCHO栅格化工程文件"
+        ],
+        "aliases": [
+          "1Daily_oversampling",
+          "2Plot_oversampling",
+          "L2到L3",
+          "TROPOMI HCHO",
+          "gridding",
+          "oversampling",
+          "regridding",
+          "run_oversampling",
+          "卫星像元重网格"
+        ],
+        "broader_topics": [
+          "TROPOMI HCHO产品生成",
+          "卫星数据重网格",
+          "卫星遥感数据后处理",
+          "遥感L2到L3处理",
+          "高分辨率栅格化"
+        ]
+      },
+      "status": "active",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "image",
+          "path": "Conference notes/attachments",
+          "locator": "Untitled 33.png; Untitled 1 3.png",
+          "detail": "截图中可见文件名或代码逻辑"
+        },
+        {
+          "type": "markdown",
+          "path": "Conference notes/With wenfu： Oversampling.md",
+          "locator": "note body",
+          "detail": "原始笔记正文支持该记忆"
+        }
+      ]
+    },
+    {
+      "memory_role": "resource",
+      "content": "TROPOMI HCHO oversampling 工程位于太乙服务器路径 `/work/ese-zhangax/data/1_Codes/TROPOMI_oversample_python`。",
+      "source_excerpt": "用户补充：oversampling的工程的路径，在太乙服务器的/work/ese-zhangax/data/1_Codes/TROPOMI_oversample_python",
+      "why_remember": "未来需要登录太乙服务器继续运行、查看或修改 oversampling 工程时，agent 必须能直接定位工程目录。",
+      "tags": [
+        "太乙",
+        "代码路径",
+        "oversampling"
+      ],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO oversampling 工程路径",
+          "kind": "location",
+          "description": "太乙服务器上的工程目录：/work/ese-zhangax/data/1_Codes/TROPOMI_oversample_python"
+        },
+        {
+          "type": "thing",
+          "title": "太乙服务器",
+          "kind": "location"
+        },
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO oversampling 工作流",
+          "kind": "method"
+        }
+      ],
+      "relations": [
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "stored_in",
+          "to": "TROPOMI HCHO oversampling 工程路径"
+        },
+        {
+          "from": "TROPOMI HCHO oversampling 工程路径",
+          "type": "part_of",
+          "to": "太乙服务器"
+        }
+      ],
+      "retrieval": {
+        "semantic_summary": "TROPOMI HCHO oversampling 工程位于太乙服务器路径 `/work/ese-zhangax/data/1_Codes/TROPOMI_oversample_python`。",
+        "direct_queries": [
+          "TROPOMI oversampling 工程在哪",
+          "oversampling 代码在太乙服务器哪个路径",
+          "TROPOMI_oversample_python 路径"
+        ],
+        "indirect_queries": [
+          "卫星数据后处理代码在哪里",
+          "遥感后处理工程路径",
+          "HCHO L2到L3处理代码目录"
+        ],
+        "aliases": [
+          "L2到L3",
+          "TROPOMI HCHO",
+          "TROPOMI_oversample_python",
+          "gridding",
+          "oversampling",
+          "regridding",
+          "卫星像元重网格",
+          "太乙oversampling代码"
+        ],
+        "broader_topics": [
+          "TROPOMI HCHO产品生成",
+          "卫星数据重网格",
+          "卫星遥感数据后处理",
+          "遥感L2到L3处理",
+          "高分辨率栅格化"
+        ]
+      },
+      "status": "active",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "user_supplement",
+          "path": "Conference notes/With wenfu： Oversampling.md",
+          "locator": "20260623关于此文件的补充",
+          "detail": "用户在 2026-06-23 补充太乙服务器工程路径"
+        },
+        {
+          "type": "markdown",
+          "path": "Conference notes/With wenfu： Oversampling.md",
+          "locator": "note supplement",
+          "detail": "原始笔记正文支持该记忆"
+        }
+      ]
+    },
+    {
+      "memory_role": "procedure",
+      "content": "`1Daily_oversampling.ipynb` 对每天的 TROPOMI HCHO level2 文件生成中间文件，并通过 oversampling 计算每日高分辨率权重，输出形如 `L3_daily_pickle + 'TROPOMI_HCHO_Daily_L3_' + iday` 的 daily L3 pickle；该文件记录细格点中 pixel 权重以及参与构建格子的 pixel 数量。",
+      "source_excerpt": "第一个ipynb的作用是... 对每一天的level2生成中间文件... L3_daily_pickle+'TROPOMI_HCHO_Daily_L3_'+iday；图片代码保存 row_raw, col_raw, Above_raw, Below_raw, Average, Pixels_count",
+      "why_remember": "未来调试或重跑第一阶段时，需要知道具体 notebook、输入、输出文件名模式和中间文件字段含义。",
+      "tags": [
+        "notebook",
+        "中间文件",
+        "level2"
+      ],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "1Daily_oversampling.ipynb",
+          "kind": "code"
+        },
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO daily L3 pickle",
+          "kind": "dataset",
+          "description": "每日 oversampling 高分辨率权重中间结果，文件名形如 TROPOMI_HCHO_Daily_L3_<iday>"
+        },
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO level2 文件",
+          "kind": "dataset"
+        },
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO oversampling 工作流",
+          "kind": "method"
+        }
+      ],
+      "relations": [
+        {
+          "from": "1Daily_oversampling.ipynb",
+          "type": "derived_from",
+          "to": "TROPOMI HCHO level2 文件"
+        },
+        {
+          "from": "TROPOMI HCHO daily L3 pickle",
+          "type": "derived_from",
+          "to": "TROPOMI HCHO level2 文件"
+        },
+        {
+          "from": "1Daily_oversampling.ipynb",
+          "type": "uses",
+          "to": "TROPOMI HCHO daily L3 pickle"
+        },
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "uses",
+          "to": "TROPOMI HCHO daily L3 pickle"
+        }
+      ],
+      "retrieval": {
+        "semantic_summary": "`1Daily_oversampling.ipynb` 对每天的 TROPOMI HCHO level2 文件生成中间文件，并通过 oversampling 计算每日高分辨率权重，输出形如 `L3_daily_pickle + 'TROPO",
+        "direct_queries": [
+          "第一个 oversampling notebook 做什么",
+          "TROPOMI_HCHO_Daily_L3 文件里是什么",
+          "level2 到 daily L3 pickle 的步骤"
+        ],
+        "indirect_queries": [
+          "卫星L2数据如何生成L3中间结果",
+          "遥感像元如何聚合到细网格",
+          "TROPOMI日尺度栅格化中间文件"
+        ],
+        "aliases": [
+          "L2到L3",
+          "TROPOMI HCHO",
+          "TROPOMI_HCHO_Daily_L3",
+          "daily L3 pickle",
+          "gridding",
+          "oversampling",
+          "regridding",
+          "卫星像元重网格"
+        ],
+        "broader_topics": [
+          "TROPOMI HCHO产品生成",
+          "卫星数据重网格",
+          "卫星遥感数据后处理",
+          "遥感L2到L3处理",
+          "高分辨率栅格化"
+        ]
+      },
+      "status": "active",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "image",
+          "path": "Conference notes/attachments",
+          "locator": "Untitled 2 3.png",
+          "detail": "截图中可见文件名或代码逻辑"
+        },
+        {
+          "type": "markdown",
+          "path": "Conference notes/With wenfu： Oversampling.md",
+          "locator": "note body",
+          "detail": "原始笔记正文支持该记忆"
+        }
+      ]
+    },
+    {
+      "memory_role": "procedure",
+      "content": "完成所有待 oversample 日期的 daily L3 pickle 后，`2Plot_oversampling.ipynb` 合并多个日期的单日 oversample 结果，并生成最终 NetCDF (`.nc`) 文件。",
+      "source_excerpt": "第2个ipynb的作用是，合并多个天的单日oversample，生成一个nc文件作为最终结果；图片显示 2Plot_oversampling.ipynb",
+      "why_remember": "未来复现完整流程时，需要知道第一阶段必须覆盖全部待处理日期，第二阶段由具体 notebook 合并为最终 NetCDF 结果。",
+      "tags": [
+        "notebook",
+        "NetCDF",
+        "合并"
+      ],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "2Plot_oversampling.ipynb",
+          "kind": "code"
+        },
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO daily L3 pickle",
+          "kind": "dataset"
+        },
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO oversampling NetCDF 结果",
+          "kind": "dataset",
+          "description": "多个日期单日 oversample 合并生成的最终 nc 文件"
+        },
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO oversampling 工作流",
+          "kind": "method"
+        }
+      ],
+      "relations": [
+        {
+          "from": "TROPOMI HCHO oversampling NetCDF 结果",
+          "type": "derived_from",
+          "to": "TROPOMI HCHO daily L3 pickle"
+        },
+        {
+          "from": "2Plot_oversampling.ipynb",
+          "type": "uses",
+          "to": "TROPOMI HCHO daily L3 pickle"
+        },
+        {
+          "from": "2Plot_oversampling.ipynb",
+          "type": "uses",
+          "to": "TROPOMI HCHO oversampling NetCDF 结果"
+        },
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "uses",
+          "to": "TROPOMI HCHO oversampling NetCDF 结果"
+        }
+      ],
+      "retrieval": {
+        "semantic_summary": "完成所有待 oversample 日期的 daily L3 pickle 后，`2Plot_oversampling.ipynb` 合并多个日期的单日 oversample 结果，并生成最终 NetCDF (`.nc`) 文件。",
+        "direct_queries": [
+          "第二个 oversampling notebook 做什么",
+          "daily L3 pickle 怎么合成最终 nc",
+          "oversampling 最终结果文件怎么生成"
+        ],
+        "indirect_queries": [
+          "多个日期卫星结果如何合成",
+          "daily L3如何生成NetCDF",
+          "卫星后处理最终nc怎么来"
+        ],
+        "aliases": [
+          "L2到L3",
+          "NetCDF result",
+          "TROPOMI HCHO",
+          "gridding",
+          "nc结果",
+          "oversampling",
+          "regridding",
+          "卫星像元重网格"
+        ],
+        "broader_topics": [
+          "TROPOMI HCHO产品生成",
+          "卫星数据重网格",
+          "卫星遥感数据后处理",
+          "遥感L2到L3处理",
+          "高分辨率栅格化"
+        ]
+      },
+      "status": "active",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "image",
+          "path": "Conference notes/attachments",
+          "locator": "Untitled 33.png",
+          "detail": "截图中可见文件名或代码逻辑"
+        },
+        {
+          "type": "markdown",
+          "path": "Conference notes/With wenfu： Oversampling.md",
+          "locator": "note body",
+          "detail": "原始笔记正文支持该记忆"
+        }
+      ]
+    },
+    {
+      "memory_role": "open_question",
+      "content": "该 oversampling 代码是按全球数据设计的，但当前只下载了经过华南的 orbits，因此运行时可能会遇到区域覆盖或边界相关问题，需要边跑边检查。",
+      "source_excerpt": "我们只下载了经过华南的orbits，他们的代码是对全球设计的，所以可能有问题，边跑边看",
+      "why_remember": "未来调试异常结果时，应优先考虑代码全球设计与华南子集 orbit 输入之间的假设不匹配。",
+      "tags": [
+        "风险",
+        "华南",
+        "orbit"
+      ],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "华南 TROPOMI orbits",
+          "kind": "dataset"
+        },
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO oversampling 工作流",
+          "kind": "method"
+        },
+        {
+          "type": "statement",
+          "title": "全球 oversampling 代码用于华南 orbit 子集时可能存在区域假设问题",
+          "kind": "question",
+          "status": "active",
+          "confidence": "medium"
+        }
+      ],
+      "relations": [
+        {
+          "from": "全球 oversampling 代码用于华南 orbit 子集时可能存在区域假设问题",
+          "type": "raises",
+          "to": "TROPOMI HCHO oversampling 工作流"
+        },
+        {
+          "from": "TROPOMI HCHO oversampling 工作流",
+          "type": "uses",
+          "to": "华南 TROPOMI orbits"
+        }
+      ],
+      "retrieval": {
+        "semantic_summary": "该 oversampling 代码是按全球数据设计的，但当前只下载了经过华南的 orbits，因此运行时可能会遇到区域覆盖或边界相关问题，需要边跑边检查。",
+        "direct_queries": [
+          "为什么华南 orbits oversampling 可能有问题",
+          "oversampling 全球代码用于华南数据有什么风险",
+          "TROPOMI HCHO oversampling 需要边跑边看什么"
+        ],
+        "indirect_queries": [
+          "区域子集卫星轨道会不会影响后处理",
+          "全球代码处理区域数据有什么风险",
+          "华南卫星数据重网格边界问题"
+        ],
+        "aliases": [
+          "L2到L3",
+          "TROPOMI HCHO",
+          "gridding",
+          "oversampling",
+          "regridding",
+          "卫星像元重网格"
+        ],
+        "broader_topics": [
+          "TROPOMI HCHO产品生成",
+          "卫星数据重网格",
+          "卫星遥感数据后处理",
+          "遥感L2到L3处理",
+          "高分辨率栅格化"
+        ]
+      },
+      "status": "uncertain",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "markdown",
+          "path": "Conference notes/With wenfu： Oversampling.md",
+          "locator": "note body",
+          "detail": "原始笔记正文支持该记忆"
+        }
+      ]
+    },
+    {
+      "memory_role": "open_question",
+      "content": "运行该 oversampling 工作流前，需要确认系统是否安装并可用 csh/cshell；原环境是 bash，但笔记推测系统里可能已有 cshell。",
+      "source_excerpt": "要使用里面的sh文件驱动，所以需要你的系统装cshell，（我的是bash，不知道行不行，到时候看看，好像我系统里是有cshell的）",
+      "why_remember": "未来运行脚本前应先检查 shell 环境，否则可能在驱动脚本阶段失败。",
+      "tags": [
+        "环境依赖",
+        "shell"
+      ],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "cshell",
+          "kind": "tool"
+        },
+        {
+          "type": "thing",
+          "title": "bash",
+          "kind": "tool"
+        },
+        {
+          "type": "thing",
+          "title": "run_oversampling.sh",
+          "kind": "code"
+        },
+        {
+          "type": "statement",
+          "title": "运行 run_oversampling.sh 前需要确认 cshell 可用",
+          "kind": "question",
+          "status": "active",
+          "confidence": "medium"
+        }
+      ],
+      "relations": [
+        {
+          "from": "run_oversampling.sh",
+          "type": "depends_on",
+          "to": "cshell"
+        },
+        {
+          "from": "运行 run_oversampling.sh 前需要确认 cshell 可用",
+          "type": "constrains",
+          "to": "run_oversampling.sh"
+        }
+      ],
+      "retrieval": {
+        "semantic_summary": "运行该 oversampling 工作流前，需要确认系统是否安装并可用 csh/cshell；原环境是 bash，但笔记推测系统里可能已有 cshell。",
+        "direct_queries": [
+          "oversampling 需要 cshell 吗",
+          "运行 oversampling 前要检查什么环境",
+          "bash 能不能跑 wenfu 的 oversampling 脚本"
+        ],
+        "indirect_queries": [
+          "卫星后处理脚本运行环境依赖",
+          "运行遥感处理脚本需要什么shell",
+          "csh依赖检查"
+        ],
+        "aliases": [
+          "L2到L3",
+          "TROPOMI HCHO",
+          "csh",
+          "cshell",
+          "gridding",
+          "oversampling",
+          "regridding",
+          "卫星像元重网格"
+        ],
+        "broader_topics": [
+          "TROPOMI HCHO产品生成",
+          "卫星数据重网格",
+          "卫星遥感数据后处理",
+          "遥感L2到L3处理",
+          "高分辨率栅格化"
+        ]
+      },
+      "status": "uncertain",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "markdown",
+          "path": "Conference notes/With wenfu： Oversampling.md",
+          "locator": "note body",
+          "detail": "原始笔记正文支持该记忆"
+        }
+      ]
+    },
+    {
+      "memory_role": "open_question",
+      "content": "`run_oversampling.sh` 中包含 oversampling 的时空范围和分辨率设置；需要确认这些信息如何传入脚本，以及范围是否应设大一点，或者保持不改。",
+      "source_excerpt": "要注意如何把信息传递进sh文件：这个sh文件包括了oversampling的时空范围和分辨率。另外这个范围是否需要设大一点？或者直接不改了，也可以；图片显示 run_oversampling.sh",
+      "why_remember": "未来配置运行区域和分辨率时，这个问题直接影响输出覆盖范围和运行正确性。",
+      "tags": [
+        "配置",
+        "时空范围",
+        "分辨率"
+      ],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "run_oversampling.sh",
+          "kind": "code"
+        },
+        {
+          "type": "thing",
+          "title": "Oversampling 时空范围和分辨率配置",
+          "kind": "config"
+        },
+        {
+          "type": "statement",
+          "title": "Oversampling 时空范围和分辨率应如何传入 run_oversampling.sh 仍需确认",
+          "kind": "question",
+          "status": "active",
+          "confidence": "medium"
+        }
+      ],
+      "relations": [
+        {
+          "from": "run_oversampling.sh",
+          "type": "uses",
+          "to": "Oversampling 时空范围和分辨率配置"
+        },
+        {
+          "from": "Oversampling 时空范围和分辨率应如何传入 run_oversampling.sh 仍需确认",
+          "type": "raises",
+          "to": "run_oversampling.sh"
+        }
+      ],
+      "retrieval": {
+        "semantic_summary": "`run_oversampling.sh` 中包含 oversampling 的时空范围和分辨率设置；需要确认这些信息如何传入脚本，以及范围是否应设大一点，或者保持不改。",
+        "direct_queries": [
+          "oversampling 时空范围在哪里设置",
+          "oversampling 分辨率怎么传给 sh 文件",
+          "华南 oversampling 范围要不要设大一点"
+        ],
+        "indirect_queries": [
+          "卫星后处理区域范围怎么设置",
+          "遥感重网格分辨率配置",
+          "L2到L3处理空间范围参数"
+        ],
+        "aliases": [
+          "L2到L3",
+          "TROPOMI HCHO",
+          "domain",
+          "gridding",
+          "oversampling",
+          "regridding",
+          "resolution",
+          "spatial range",
+          "卫星像元重网格"
+        ],
+        "broader_topics": [
+          "TROPOMI HCHO产品生成",
+          "卫星数据重网格",
+          "卫星遥感数据后处理",
+          "遥感L2到L3处理",
+          "高分辨率栅格化"
+        ]
+      },
+      "status": "uncertain",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "image",
+          "path": "Conference notes/attachments",
+          "locator": "Untitled 1 3.png",
+          "detail": "截图中可见文件名或代码逻辑"
+        },
+        {
+          "type": "markdown",
+          "path": "Conference notes/With wenfu： Oversampling.md",
+          "locator": "note body",
+          "detail": "原始笔记正文支持该记忆"
+        }
+      ]
+    }
+  ],
+  "quality_checks": {
+    "omitted_noise": [
+      "图片嵌入和附件路径只作为 source context，不建实体",
+      "未把截图文件名建成实体，只提取截图中可见的真实 notebook、Fortran 和 shell 文件名",
+      "未把 pixel、level2、nc 等普通技术词单独建成实体，除非它们构成稳定数据对象的一部分"
+    ],
+    "entity_boundary_notes": [
+      "TROPOMI 和 HCHO 在旧 Wiki 中已有可信实体，plan 中保留同名以便 dedup。",
+      "cshell/bash 是环境依赖工具，保留为 thing.kind=tool。"
+    ],
+    "open_questions": [
+      "图片中可见支持文件 cakecut_m.f90、tools_m.f90、*.mod、*.x；当前只保留核心主程序和驱动脚本，是否要把支持文件也纳入实体需人工决定。",
+      "statement.kind 是否应增加 open_question/question 的统一规范；当前沿用 schema 中的 question。"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 # literature_radar
 
-Quota-burning weekly literature radar for atmospheric chemistry and AI/ML for science. The goal is to spend otherwise-unused quota on useful information: fetch current candidates, triage by abstract, read selected full text, extract open data/code, and write a concise Chinese-readable briefing.
+Quota-burning weekly literature radar for atmospheric chemistry and AI/ML for science. The goal is to spend otherwise-unused quota on useful information: fetch current candidates, triage by abstract, read selected full text, extract open data/code, write a concise Chinese-readable briefing, and produce Atlas memory JSON for each read paper.
 
 ## Data Sources
 
@@ -47,7 +47,15 @@ Candidate objects include:
 
 ## Step 2: Triage
 
-Read `output/candidates.json`. Score each paper using title and abstract only.
+Default automated path:
+
+```bash
+python scripts/triage_candidates.py
+```
+
+This reads `output/candidates.json`, uses the configured topic keywords plus built-in core terms, and writes `output/selected.json`.
+
+Manual review is still allowed when needed. In either case, score each paper using title and abstract only.
 
 | Score | Meaning |
 |-------|---------|
@@ -141,7 +149,41 @@ Examples of acceptable diagnostic quantities:
 - condensation sink, O3/oxidation capacity, boundary-layer height, SHAP contribution
 - trend, 2-sigma uncertainty, drift diagnostics, proxy contribution, or R2 improvement
 
-## Step 5: Assemble Report
+## Step 5: Create Atlas Paper Memory
+
+For every selected paper, also write one Atlas memory plan:
+
+```text
+output/memory/<paper-slug>.memory.json
+```
+
+Use `modules/atlas/references/paper-memory.md` plus the general Atlas prompt at `modules/atlas/references/llm-fragment-prompt.md`.
+
+The memory JSON is not a second human report. It is the agent-callable memory layer for later retrieval. It should preserve the paper's durable findings, reusable method chain, datasets/code/resources, limitations, and open questions.
+
+Minimum requirements:
+
+- Use the same paper slug as `output/fulltext/<paper-slug>.txt`.
+- Set `note.source_type` to `pdf` when the full text came from PDF; otherwise use `other`.
+- Set `note.domain` to include `科研` and `论文`; add topic labels such as `大气化学`, `卫星遥感`, `AI4Science`, `机器学习`, or `排放清单` when appropriate.
+- Add `paper_profile` for fast orientation: citation key, title, authors, year, DOI, journal, research question, methods, datasets, main findings, limitations, open data, use for the user's work, and do-not-overclaim boundaries.
+- Create 3-7 high-value memory fragments for full papers. Use fewer for abstract-only or paywalled papers.
+- Include at least one indirect retrieval query per important fragment, so a future agent can find the paper without remembering its title.
+- Keep source evidence simple: `source_evidence.path` is enough for ordinary extracted text; add `locator` only for large/nonlinear evidence such as PDF page, figure, table, supplement, or code path.
+
+Validate each memory file before finalizing:
+
+```bash
+python modules/atlas/tools/wiki_fragment.py validate --plan output/memory/<paper-slug>.memory.json
+```
+
+Apply only when the user asks to build or update the Atlas memory index:
+
+```bash
+python modules/atlas/tools/wiki_fragment.py apply --plan output/memory/<paper-slug>.memory.json
+```
+
+## Step 6: Assemble Report
 
 Write `output/YYYY-MM-DD_radar.md` with this structure. Use Chinese for TL;DR, `Main conclusions`, `How they proved it`, and `Limitations`; keep paper titles, links, venue names, dataset names, and code/data resource names in their original language when clearer.
 
@@ -232,3 +274,5 @@ Before finalizing:
 - Paywalled papers are listed instead of silently dropped.
 - Corresponding author affiliation is the full institution name when available.
 - Report is readable end to end in under 12 minutes.
+- Every selected paper has `output/memory/<paper-slug>.memory.json`.
+- Each memory JSON follows Atlas, not a paper-specific one-off schema.

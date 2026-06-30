@@ -1,0 +1,47 @@
+{
+  "default_policy": {
+    "search_unmatched_conventions": false,
+    "merge_results_limit": 12
+  },
+  "conventions": [
+    {
+      "id": "daily_habit_front_memory",
+      "name": "日常习惯约定",
+      "description": "来自聊天整理的代码习惯、兴趣方向、常见纠错点。默认常驻前台记忆，普通对话也可以调用。",
+      "always_on": true,
+      "priority": 100,
+      "domain_filter": ["日常习惯"],
+      "source_type_filter": ["chat", "user_supplement", "markdown"],
+      "intent_patterns": []
+    },
+    {
+      "id": "paper_gate_convention",
+      "name": "论文门控约定",
+      "description": "只在科研、论文、文献、方法、模型、实验、数据集等语境下调用，避免普通聊天扫描论文记忆。",
+      "always_on": false,
+      "priority": 80,
+      "domain_filter": ["科研", "论文"],
+      "source_type_filter": [],
+      "intent_patterns": [
+        "论文", "文献", "paper", "papers", "literature", "doi", "journal", "abstract",
+        "research", "科研", "study", "article", "preprint", "arxiv",
+        "方法", "模型", "机制", "实验", "反演", "数据集", "观测", "遥感",
+        "GEOS-Chem", "WRF", "HYSPLIT", "satellite", "aerosol", "ozone", "SOA"
+      ]
+    },
+    {
+      "id": "note_gate_convention",
+      "name": "笔记门控约定",
+      "description": "用于之前的 md 笔记、讨论、日常信息。只有在用户明确需要 agent 回忆、追溯、复盘、想起之前内容时调用。",
+      "always_on": false,
+      "priority": 60,
+      "domain_filter": ["笔记", "讨论", "日常信息"],
+      "source_type_filter": ["markdown", "chat", "user_supplement"],
+      "intent_patterns": [
+        "笔记", "回忆", "回想", "复盘", "之前说过", "之前提过", "以前记过", "你还记得",
+        "我们讨论过", "以前聊过", "想想之前", "翻一下笔记", "历史记录", "聊天记录", "讨论记录",
+        "note", "notes", "recall", "remember", "memory", "history", "discussion"
+      ]
+    }
+  ]
+}

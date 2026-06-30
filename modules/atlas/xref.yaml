@@ -1,0 +1,54 @@
+# xref.yaml — Forward → Reverse link rules for bidirectional link integrity.
+
+terminal_targets: []
+
+rules:
+  # thing.project → thing (parent project)
+  - forward:
+      kind: "*"
+      field: project
+      target: thing
+    reverse:
+      kind: thing
+      body_section: "## 相关"
+      action: append_slug
+
+  # event.actors → actor
+  - forward:
+      kind: event
+      field: actors
+      target: actor
+    reverse:
+      kind: actor
+      body_section: "## 参与事件"
+      action: append_slug
+
+  # statement.source → thing/event
+  - forward:
+      kind: statement
+      field: source
+      target: "*"
+    reverse:
+      kind: "*"
+      body_section: "## 引用此判断"
+      action: append_slug
+
+  # statement.supersedes → statement
+  - forward:
+      kind: statement
+      field: supersedes
+      target: statement
+    reverse:
+      kind: statement
+      body_section: "## 后续判断"
+      action: append_slug
+
+  # *.related → any (generic)
+  - forward:
+      kind: "*"
+      field: related
+      target: "*"
+    reverse:
+      kind: "*"
+      body_section: "## 相关"
+      action: append_slug

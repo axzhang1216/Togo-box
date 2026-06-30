@@ -1,0 +1,80 @@
+{
+  "vault_root": "../..",
+  "wiki_root": "../../output/atlas-wiki",
+  "entity_types": {
+    "thing": {
+      "dir": "thing",
+      "tag": "wiki/thing",
+      "title_field": "title",
+      "key_fields": ["title", "slug", "kind"],
+      "kind_values": ["model", "dataset", "code", "config", "method", "tool", "location", "project", "paper", "other"],
+      "optional_fields": ["tags", "project", "related", "description"],
+      "template": "Wiki-Thing"
+    },
+    "event": {
+      "dir": "event",
+      "tag": "wiki/event",
+      "title_field": "title",
+      "key_fields": ["title", "slug", "kind"],
+      "kind_values": ["meeting", "experiment", "debug", "discussion", "conference", "travel", "other"],
+      "optional_fields": ["tags", "date", "actors", "related", "outcome"],
+      "template": "Wiki-Event"
+    },
+    "statement": {
+      "dir": "statement",
+      "tag": "wiki/statement",
+      "title_field": "title",
+      "key_fields": ["title", "slug", "kind"],
+      "kind_values": ["decision", "constraint", "finding", "hypothesis", "rule", "other"],
+      "optional_fields": ["status", "confidence", "tags", "source", "supersedes", "related"],
+      "template": "Wiki-Statement"
+    },
+    "actor": {
+      "dir": "actor",
+      "tag": "wiki/actor",
+      "title_field": "name",
+      "key_fields": ["name", "slug", "kind"],
+      "kind_values": ["person", "team", "organization"],
+      "optional_fields": ["affiliation", "role", "research_areas", "tags", "related"],
+      "template": "Wiki-Actor"
+    },
+    "note": {
+      "dir": "note",
+      "tag": "wiki/note",
+      "title_field": "title",
+      "key_fields": ["title", "slug"],
+      "optional_fields": ["tags", "source_path", "related"],
+      "template": "Wiki-Note"
+    }
+  },
+  "relationships": {
+    "project": {
+      "target": "thing",
+      "link_type": "link",
+      "reverse_section": "## 相关"
+    },
+    "source": {
+      "target": ["thing", "event"],
+      "link_type": "list_link",
+      "reverse_section": "## 引用此判断"
+    },
+    "actors": {
+      "target": "actor",
+      "link_type": "list_link",
+      "reverse_section": "## 参与事件"
+    },
+    "supersedes": {
+      "target": "statement",
+      "link_type": "link",
+      "reverse_section": "## 后续判断"
+    },
+    "related": {
+      "target": "*",
+      "link_type": "list_link",
+      "reverse_section": "## 相关"
+    }
+  },
+  "fuzzy_match_threshold": 0.86,
+  "memory_index_path": "../../output/atlas-wiki/wiki_index.md",
+  "template_dir": "templates"
+}

@@ -1,0 +1,297 @@
+{
+  "note": {
+    "title": "和朱雷老师讨论oversampling结果",
+    "slug": "conference-notes-zhu-lei-oversampling-results",
+    "source_path": "Conference notes/和朱雷老师讨论oversampling结果.md",
+    "source_type": "markdown",
+    "domain": ["科研", "卫星遥感", "论文想法"],
+    "tags": ["oversampling", "TROPOMI", "HCHO", "uncertainty", "satellite"]
+  },
+  "fragments": [
+    {
+      "memory_role": "finding",
+      "content": "经过讨论分析，oversampling 处理后的卫星观测数据在理论基础和数据质量上均满足甲醛（HCHO）反演建模要求；其基本原理与常规反演方法一致，不确定度水平也在可接受范围内。",
+      "source_excerpt": "基于oversampling处理后的卫星观测数据是否适用于甲醛(HCHO)的反演建模？... 该方法在理论基础和数据质量上均满足反演要求",
+      "why_remember": "未来判断 oversampling 结果能否用于 HCHO 反演时，需要召回这条可行性结论。",
+      "retrieval": {
+        "semantic_summary": "Oversampling 处理后的卫星观测数据可用于 HCHO 反演建模，理论基础和数据质量均可接受。",
+        "direct_queries": [
+          "oversampling 后的数据能不能用于 HCHO 反演",
+          "HCHO 反演能用 oversampling 结果吗",
+          "oversampling 数据质量是否满足反演要求"
+        ],
+        "indirect_queries": [
+          "卫星数据后处理结果能不能用于反演建模",
+          "遥感 L2 到 L3 后的数据是否适合甲醛反演",
+          "高分辨率栅格化卫星数据能否用于化学反演"
+        ],
+        "aliases": ["oversampling", "HCHO inversion", "甲醛反演", "卫星观测反演", "TROPOMI HCHO"],
+        "broader_topics": ["卫星遥感数据后处理", "HCHO反演建模", "遥感L2到L3处理", "卫星数据质量评估"]
+      },
+      "status": "active",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "markdown",
+          "path": "Conference notes/和朱雷老师讨论oversampling结果.md",
+          "locator": "研究可行性分析",
+          "detail": "研究可行性分析部分记录该结论。"
+        }
+      ],
+      "tags": ["反演", "可行性", "HCHO"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "TROPOMI HCHO oversampling 结果",
+          "kind": "dataset",
+          "description": "经过 oversampling 处理后的 TROPOMI HCHO 卫星观测数据"
+        },
+        {
+          "type": "thing",
+          "title": "HCHO 反演建模",
+          "kind": "method"
+        },
+        {
+          "type": "statement",
+          "title": "Oversampling 处理后的卫星观测数据满足 HCHO 反演建模要求",
+          "kind": "finding",
+          "status": "active",
+          "confidence": "medium"
+        }
+      ],
+      "relations": [
+        {"from": "TROPOMI HCHO oversampling 结果", "type": "supports", "to": "HCHO 反演建模"},
+        {"from": "Oversampling 处理后的卫星观测数据满足 HCHO 反演建模要求", "type": "answers", "to": "HCHO 反演建模"}
+      ]
+    },
+    {
+      "memory_role": "finding",
+      "content": "Oversampling 在时间维度上存在根本限制：空间维度可利用卫星过境时观测点位置的微小偏差形成 over-sampling 基础，但同一区域的观测时间几乎恒定，仅相差数分钟，缺乏足够的 sampling 变异性。",
+      "source_excerpt": "时间维度的oversampling存在根本性限制... 空间维度：卫星每次过境时观测点位置存在微小偏差... 时间维度：同一区域的观测时间几乎恒定",
+      "why_remember": "未来设计卫星 oversampling 分析时，需要避免把空间 oversampling 的逻辑错误外推到时间维度。",
+      "retrieval": {
+        "semantic_summary": "Oversampling 适合利用空间采样差异，但不适合直接扩展到时间维度，因为同一区域观测时间几乎恒定。",
+        "direct_queries": [
+          "oversampling 能不能扩展到时间维度",
+          "为什么时间维度 oversampling 有限制",
+          "卫星 oversampling 的时间维度限制是什么"
+        ],
+        "indirect_queries": [
+          "卫星数据能不能提高时间分辨率",
+          "遥感后处理能否做时间超分辨率",
+          "为什么 TROPOMI 不能靠 oversampling 做小时尺度"
+        ],
+        "aliases": ["temporal oversampling", "时间维度oversampling", "sampling variability", "过境时间"],
+        "broader_topics": ["卫星遥感数据后处理", "时间分辨率限制", "遥感采样理论", "高分辨率栅格化"]
+      },
+      "status": "active",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "markdown",
+          "path": "Conference notes/和朱雷老师讨论oversampling结果.md",
+          "locator": "时空应用范围",
+          "detail": "时空应用范围部分记录该限制。"
+        }
+      ],
+      "tags": ["时间分辨率", "限制", "sampling"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "卫星 oversampling 方法",
+          "kind": "method"
+        },
+        {
+          "type": "statement",
+          "title": "Oversampling 不应直接扩展到时间维度",
+          "kind": "finding",
+          "status": "active",
+          "confidence": "medium"
+        }
+      ],
+      "relations": [
+        {"from": "Oversampling 不应直接扩展到时间维度", "type": "constrains", "to": "卫星 oversampling 方法"}
+      ]
+    },
+    {
+      "memory_role": "rule",
+      "content": "TROPOMI 数据的时间分辨率应限制在日尺度；如果需要更高时间分辨率分析，应考虑 GEMS 数据。",
+      "source_excerpt": "TROPOMI数据时间分辨率应限制在日尺度；【GEMS卫星名称全称】(GEMS)数据可支持更高时间分辨率分析",
+      "why_remember": "未来选择卫星数据源或解释时间分辨率时，需要知道 TROPOMI 与 GEMS 的适用边界。",
+      "retrieval": {
+        "semantic_summary": "TROPOMI 时间分辨率应按日尺度处理；更高时间分辨率分析应考虑 GEMS。",
+        "direct_queries": [
+          "TROPOMI oversampling 时间分辨率应该是多少",
+          "TROPOMI 可以做小时尺度分析吗",
+          "GEMS 和 TROPOMI 在时间分辨率上有什么区别"
+        ],
+        "indirect_queries": [
+          "卫星甲醛数据时间分辨率怎么选",
+          "做高时间分辨率空气质量遥感应该用什么卫星",
+          "卫星后处理时间尺度如何确定"
+        ],
+        "aliases": ["TROPOMI daily", "GEMS", "日尺度", "高时间分辨率卫星"],
+        "broader_topics": ["卫星遥感数据后处理", "卫星时间分辨率", "HCHO反演建模", "空气质量遥感"]
+      },
+      "status": "active",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "markdown",
+          "path": "Conference notes/和朱雷老师讨论oversampling结果.md",
+          "locator": "时间分辨率界定",
+          "detail": "时间分辨率界定部分记录 TROPOMI 与 GEMS 的适用边界。"
+        }
+      ],
+      "tags": ["TROPOMI", "GEMS", "时间分辨率"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "TROPOMI",
+          "kind": "dataset"
+        },
+        {
+          "type": "thing",
+          "title": "GEMS",
+          "kind": "dataset"
+        },
+        {
+          "type": "statement",
+          "title": "TROPOMI 数据时间分辨率应限制在日尺度",
+          "kind": "rule",
+          "status": "active",
+          "confidence": "medium"
+        }
+      ],
+      "relations": [
+        {"from": "TROPOMI 数据时间分辨率应限制在日尺度", "type": "constrains", "to": "TROPOMI"},
+        {"from": "GEMS", "type": "supports", "to": "高时间分辨率卫星分析"}
+      ]
+    },
+    {
+      "memory_role": "procedure",
+      "content": "在独立观测事件假设下，oversampling 不确定度可按 `150%/√n` 估算：单次像元观测不确定度约 150%，n 次独立观测平均值不确定度为 150%/√n；例如要降至约 15%，需累积约 100 次独立观测。",
+      "source_excerpt": "单次像元观测不确定度：150%；n次独立观测平均值不确定度：150%/√n；若要将不确定度降至15%，需累积约100次独立观测",
+      "why_remember": "未来估算 oversampling 结果不确定度或解释样本量需求时，需要这条计算规则。",
+      "retrieval": {
+        "semantic_summary": "Oversampling 不确定度在独立观测假设下按 150%/√n 下降，约 100 次独立观测可降至 15%。",
+        "direct_queries": [
+          "oversampling 不确定度怎么算",
+          "150%/√n 是什么意思",
+          "HCHO oversampling 要多少次观测才能到 15% 不确定度"
+        ],
+        "indirect_queries": [
+          "卫星像元平均后误差怎么降低",
+          "遥感多次观测平均的不确定度公式",
+          "卫星后处理需要多少样本量"
+        ],
+        "aliases": ["150%/sqrt(n)", "150%/√n", "uncertainty scaling", "独立观测平均"],
+        "broader_topics": ["卫星数据不确定度", "HCHO反演建模", "遥感误差传播", "oversampling样本量"]
+      },
+      "status": "active",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "markdown",
+          "path": "Conference notes/和朱雷老师讨论oversampling结果.md",
+          "locator": "不确定度量化方法",
+          "detail": "不确定度量化方法部分记录公式和示例。"
+        }
+      ],
+      "tags": ["不确定度", "误差传播", "样本量"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "Oversampling 不确定度估算方法",
+          "kind": "method"
+        },
+        {
+          "type": "statement",
+          "title": "Oversampling 独立观测平均不确定度可按 150%/√n 估算",
+          "kind": "rule",
+          "status": "active",
+          "confidence": "medium"
+        }
+      ],
+      "relations": [
+        {"from": "Oversampling 不确定度估算方法", "type": "depends_on", "to": "独立观测事件假设"}
+      ]
+    },
+    {
+      "memory_role": "open_question",
+      "content": "Oversampling 不确定度估算中的独立性假设仍需检验：同一成像器（camera）可能存在系统性误差，使同时间段内不同空间位置的观测误差相关；系统性误差的具体来源和量化方法还需要补充。",
+      "source_excerpt": "关键科学问题：时间维度上的独立性假设是否成立？... 同一成像器(camera)可能存在系统性误差... 【补充：系统性误差的具体来源和量化方法】",
+      "why_remember": "未来解释或改进 oversampling 不确定度估计时，需要优先处理观测误差独立性和 camera 系统误差问题。",
+      "retrieval": {
+        "semantic_summary": "Oversampling 不确定度估算依赖独立性假设，但 camera 系统性误差可能导致同时间段空间误差相关，来源和量化方法待补充。",
+        "direct_queries": [
+          "oversampling 不确定度独立性假设成立吗",
+          "camera 系统误差会影响 oversampling 吗",
+          "系统性误差来源和量化方法是什么"
+        ],
+        "indirect_queries": [
+          "卫星观测误差是否空间相关",
+          "遥感像元平均的不确定度有什么隐患",
+          "同一成像器误差相关性怎么处理"
+        ],
+        "aliases": ["camera systematic error", "系统性误差", "独立性假设", "误差相关性"],
+        "broader_topics": ["卫星数据不确定度", "遥感误差传播", "HCHO反演建模", "oversampling质量控制"]
+      },
+      "status": "uncertain",
+      "created_at": "2026-06-23",
+      "last_verified": "2026-06-23",
+      "source_evidence": [
+        {
+          "type": "markdown",
+          "path": "Conference notes/和朱雷老师讨论oversampling结果.md",
+          "locator": "时间尺度适用性分析",
+          "detail": "时间尺度适用性分析部分记录该未解决问题。"
+        }
+      ],
+      "tags": ["open-question", "不确定度", "系统误差"],
+      "entities": [
+        {
+          "type": "thing",
+          "title": "独立观测事件假设",
+          "kind": "method"
+        },
+        {
+          "type": "statement",
+          "title": "Oversampling 不确定度估算中的独立性假设仍需检验",
+          "kind": "question",
+          "status": "active",
+          "confidence": "medium"
+        },
+        {
+          "type": "statement",
+          "title": "同一成像器系统性误差可能导致空间观测误差相关",
+          "kind": "hypothesis",
+          "status": "active",
+          "confidence": "medium"
+        }
+      ],
+      "relations": [
+        {"from": "Oversampling 不确定度估算中的独立性假设仍需检验", "type": "raises", "to": "Oversampling 不确定度估算方法"},
+        {"from": "同一成像器系统性误差可能导致空间观测误差相关", "type": "constrains", "to": "Oversampling 不确定度估算方法"}
+      ]
+    }
+  ],
+  "quality_checks": {
+    "omitted_noise": [
+      "原文中的问题编号和标题只作为结构，不单独建实体。",
+      "【GEMS卫星名称全称】是占位符，未扩展全称，避免幻觉。"
+    ],
+    "entity_boundary_notes": [
+      "将可用于未来科学判断的结论建为 statement；将方法和数据对象建为 thing。",
+      "朱雷老师出现在文件名但原文未提供具体角色和贡献，暂不建 actor，避免过度结构化。"
+    ],
+    "open_questions": [
+      "GEMS 的全称需要后续补充确认。",
+      "系统性误差的来源和量化方法需要后续补充。"
+    ]
+  }
+}
